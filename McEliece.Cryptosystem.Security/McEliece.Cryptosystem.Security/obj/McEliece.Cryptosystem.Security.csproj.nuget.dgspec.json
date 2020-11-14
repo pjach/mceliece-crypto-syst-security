@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pjach\\source\\repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {}
+    "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pjach\\source\\repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {
+    "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pjach\\source\\repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
+        "projectUniqueName": "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
         "projectName": "McEliece.Cryptosystem.Security",
-        "projectPath": "C:\\Users\\pjach\\source\\repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
+        "projectPath": "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
         "packagesPath": "C:\\Users\\pjach\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pjach\\source\\repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\obj\\",
+        "outputPath": "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\pjach\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -29,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +38,17 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[4.12.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
