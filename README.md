@@ -2,3 +2,5 @@ Project and bachelor work "Study of the security of McEliece public-key cryptosy
 
 Implemented attacks:
 1. Failure under resent message.
+
+Paulius Jachimovičius, 2020-2021.
