@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\McEliece.Cryptosystem.Security",
+    "\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security"
   ],
+  "SelectedNode": "\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.sln",
   "PreviewInSolutionExplorer": false
 }
