@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace matrixcEliece.Cryptosystem.Security.Utilities
 {
-    public static class Calculation
+    public static class CalculationHelper
     {
         public static Vector<float> MultipyMatrixWithVector(Matrix<float> matrix, Vector<float> vector)
         {
@@ -127,11 +127,10 @@ namespace matrixcEliece.Cryptosystem.Security.Utilities
             }
         }
 
-        public static List<int> GenerateKnumberOfRandomColumnsIndices(int k, IList<int> L0Set)
+        public static List<int> GenerateKnumberOfRandomColumnsIndices(int k, IList<int> L0Set, Randomizer randomizer)
         {
             var columnIndices = new List<int>();
             var usedColumnsIndices = new ArrayList();
-            Randomizer randomizer = new Randomizer();
 
             for (int i = 0; i < k; i++)
             {
@@ -174,6 +173,45 @@ namespace matrixcEliece.Cryptosystem.Security.Utilities
             var finalMatrix = prefinal.InsertColumn(indicesCount, temporaryVector);
 
             return finalMatrix;
+        }
+
+        public static Vector<float> GenerateErrorVector(int length, int amountOfErrors, Randomizer randomizer)
+        {
+            var vector = Vector<float>.Build.Dense(length, 0);
+
+            for (int i = 0; i < amountOfErrors; i++)
+            {
+                int randomIndex = randomizer.Next(0, length - 1);
+                if (vector[randomIndex] != 0)
+                {
+                    i--;
+                }
+                vector[randomIndex] = 1;
+            }
+
+            return vector;
+        }
+
+        public static Vector<float> AddVectorMod2(Vector<float> vector1, Vector<float> vector2)
+        {
+            var finalVector = Vector<float>.Build.Dense(vector1.Count, 0);
+
+            for (int i = 0; i < vector1.Count; i++)
+            {
+                finalVector[i] = AddBinaryNumbers(vector1[i], vector2[i]);
+            }
+
+            return finalVector;
+        }
+
+        public static bool AreThereAnyGarbledIndices(List<int> randomIndices, Vector<float> errorVector1, Vector<float> errorVector2)
+        {
+            foreach (int index in randomIndices)
+            {
+                if (errorVector1[index] == 1 || errorVector2[index] == 1) return true;
+            }
+
+            return false;
         }
     }
 }
