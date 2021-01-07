@@ -62,3 +62,4 @@ C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliec
 C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\obj\Debug\netcoreapp3.1\McEliece.Cryptosystem.Security.pdb
 C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\obj\Debug\netcoreapp3.1\McEliece.Cryptosystem.Security.genruntimeconfig.cache
 C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\obj\Debug\netcoreapp3.1\McEliece.Cryptosystem.Security.csprojAssemblyReference.cache

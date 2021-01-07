@@ -1,5 +1,4 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
-using matrixcEliece.Cryptosystem.Security.Utilities;
 using McEliece.Cryptosystem.Security.Models;
 using McEliece.Cryptosystem.Security.Utilities;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ namespace McEliece.Cryptosystem.Security.Attacks
 {
     public class FailureUnderRelatedMessageAttacks
     {
-        private readonly Randomizer randomizer = new Randomizer();
+        private readonly Randomizer randomizer = Randomizer.Instance;
         private readonly Stopwatch stopwatch = new Stopwatch();
 
         public StatisticsEntry FailureUnderMessageResendAttack(int errorVectorWeight, Vector<float> interceptedVector1,

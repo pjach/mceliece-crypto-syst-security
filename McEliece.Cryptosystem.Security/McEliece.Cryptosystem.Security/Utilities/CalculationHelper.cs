@@ -1,10 +1,9 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
-using McEliece.Cryptosystem.Security.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace matrixcEliece.Cryptosystem.Security.Utilities
+namespace McEliece.Cryptosystem.Security.Utilities
 {
     public static class CalculationHelper
     {

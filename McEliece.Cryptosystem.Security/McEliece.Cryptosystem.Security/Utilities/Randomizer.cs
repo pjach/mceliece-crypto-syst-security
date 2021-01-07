@@ -3,9 +3,30 @@ using System.Security.Cryptography;
 
 namespace McEliece.Cryptosystem.Security.Utilities
 {
-    public class Randomizer : RandomNumberGenerator
+    public sealed class Randomizer : RandomNumberGenerator
     {
         private readonly RandomNumberGenerator rng = new RNGCryptoServiceProvider();
+        private static Randomizer instance = null;
+
+        static Randomizer()
+        {
+        }
+
+        private Randomizer()
+        {
+        }
+
+        public static Randomizer Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Randomizer();
+                }
+                return instance;
+            }
+        }
 
         public int Next()
         {
