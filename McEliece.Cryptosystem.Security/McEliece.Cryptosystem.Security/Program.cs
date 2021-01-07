@@ -1,4 +1,5 @@
-﻿using McEliece.Cryptosystem.Security.Attacks;
+﻿using McEliece.Cryptosystem.Security.Contracts;
+using McEliece.Cryptosystem.Security.Statistics;
 using McEliece.Cryptosystem.Security.Utilities;
 using System.Configuration;
 
@@ -8,22 +9,49 @@ namespace McEliece.Cryptosystem.Security
     {
         private static void Main(string[] args)
         {
-            string publicKeyData = FileReader.ReadFromFile(ConfigurationManager
+            IFileReader fileReader = new FileReader();
+
+            string relatedAttackData = fileReader.ReadFromFile(ConfigurationManager
+                            .AppSettings["related_statistics"]);
+            string resendAttackData = fileReader.ReadFromFile(ConfigurationManager
+                            .AppSettings["resend_statistics"]);
+
+            var statistics = new FailureUnderRelatedMessageStatistics();
+
+            System.Console.WriteLine("Failure under related message attack statistics");
+            statistics.CalculateAndPrintStatistics(relatedAttackData);
+
+            System.Console.WriteLine("Failure under resend message attack statistics");
+            statistics.CalculateAndPrintStatistics(resendAttackData);
+
+            /*
+            string publicKeyData = fileReader.ReadFromFile(ConfigurationManager
                                        .AppSettings["public_matrix_file_name"]);
-            string interceptedMessage1 = FileReader.ReadFromFile(ConfigurationManager
-                                          .AppSettings["first_ciphered_vector_name"]);
-            string interceptedMessage2 = FileReader.ReadFromFile(ConfigurationManager
-                                         .AppSettings["second_ciphered_vector_name"]);
-            string messageData = FileReader.ReadFromFile(ConfigurationManager
-                                        .AppSettings["message_vector_name"]);
+            string messageData1 = fileReader.ReadFromFile(ConfigurationManager
+                                        .AppSettings["message_vector_name1"]);
+            string messageData2 = fileReader.ReadFromFile(ConfigurationManager
+                            .AppSettings["message_vector_name2"]);
 
             var publicKey = Converter.ConvertToMatrix(publicKeyData);
-            var interceptedVector1 = Converter.ConvertToVector(interceptedMessage1);
-            var interceptedVector2 = Converter.ConvertToVector(interceptedMessage2);
-            var messageVector = Converter.ConvertToVector(messageData);
+            var messageVector1 = Converter.ConvertToVector(messageData1);
+            var messageVector2 = Converter.ConvertToVector(messageData1);
 
-            FailureUnderMessageResendAttack.AttemptAnAttack(messageVector, interceptedVector1,
-                                                               interceptedVector2, publicKey);
+            var attack = new FailureUnderMessageConditionAttacks();
+
+            for (int i = 1; i <= 100; i++)
+            {
+                var relatedMessageEntry = attack.PrepareDataAndAttemptRelatedAttack(messageVector1, messageVector2, 50, publicKey);
+                System.Console.WriteLine(i + ". iteration" + System.Environment.NewLine + "  " + relatedMessageEntry.SpentTime
+                    + ", " + relatedMessageEntry.TotalIterationsCount + ", " + DateTime.Now);
+                var resendMessageEntry = attack.PrepareDataAndAttemptResendAttack(messageVector1, 50, publicKey);
+                System.Console.WriteLine("  " + resendMessageEntry.SpentTime + ", "
+                    + resendMessageEntry.TotalIterationsCount);
+                relatedStatistics.Add(relatedMessageEntry);
+                resendStatistics.Add(resendMessageEntry);
+            }
+            FileWriter.WriteToFile(JsonConvert.SerializeObject(relatedStatistics), "RelatedMessageAttackStatisticss.txt");
+            FileWriter.WriteToFile(JsonConvert.SerializeObject(resendStatistics), "ResendMessageAttackStatisticss.txt");
+            */
         }
     }
 }

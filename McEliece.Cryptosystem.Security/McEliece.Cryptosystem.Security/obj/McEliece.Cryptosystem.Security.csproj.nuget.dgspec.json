@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {}
+    "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {
+    "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
+        "projectUniqueName": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
         "projectName": "McEliece.Cryptosystem.Security",
-        "projectPath": "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
+        "projectPath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
         "packagesPath": "C:\\Users\\pjach\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pjach\\Source\\Repos\\pjach\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\obj\\",
+        "outputPath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pjach\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "MathNet.Numerics": {
               "target": "Package",
               "version": "[4.12.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",

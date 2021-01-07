@@ -1,18 +1,15 @@
-﻿using System;
+﻿using McEliece.Cryptosystem.Security.Contracts;
+using System;
 using System.IO;
-using System.Reflection;
 
 namespace McEliece.Cryptosystem.Security.Utilities
 {
-    public static class FileReader
+    public class FileReader : IFileReader
     {
-        public static string ReadFromFile(string name)
+        public string ReadFromFile(string name)
         {
             string data = string.Empty;
-            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            int index = path.LastIndexOf("bin");
-            path = path.Substring(0, index);
-            path = Path.Combine(path, "Data", name);
+            string path = PathHelper.GetPath(name);
 
             if (File.Exists(path))
             {

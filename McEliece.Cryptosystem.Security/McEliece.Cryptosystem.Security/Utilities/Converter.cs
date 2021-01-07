@@ -35,5 +35,7 @@ namespace McEliece.Cryptosystem.Security.Utilities
 
             return Vector<float>.Build.DenseOfArray(arrayVector);
         }
+
+
     }
 }
