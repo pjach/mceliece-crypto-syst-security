@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace McEliece.Cryptosystem.Security.Utilities
+namespace MIF.VU.PJach.McElieceSecurity.Utilities
 {
     public sealed class Randomizer : RandomNumberGenerator
     {

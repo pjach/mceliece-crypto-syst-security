@@ -1,7 +1,7 @@
-﻿using McEliece.Cryptosystem.Security.Contracts;
+﻿using MIF.VU.PJach.McElieceSecurity.Contracts;
 using System.IO;
 
-namespace McEliece.Cryptosystem.Security.Utilities
+namespace MIF.VU.PJach.McElieceSecurity.Utilities
 {
     public class FileWriter : IFileWriter
     {

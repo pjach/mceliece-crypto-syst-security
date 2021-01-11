@@ -1,9 +1,9 @@
-﻿using McEliece.Cryptosystem.Security.Contracts;
-using McEliece.Cryptosystem.Security.Statistics;
-using McEliece.Cryptosystem.Security.Utilities;
+﻿using MIF.VU.PJach.McElieceSecurity.Contracts;
+using MIF.VU.PJach.McElieceSecurity.Statistics;
+using MIF.VU.PJach.McElieceSecurity.Utilities;
 using System.Configuration;
 
-namespace McEliece.Cryptosystem.Security
+namespace MIF.VU.PJach.McElieceSecurity
 {
     internal class Program
     {
@@ -16,6 +16,10 @@ namespace McEliece.Cryptosystem.Security
                             .AppSettings["related_statistics"]);
             string resendAttackData = fileReader.ReadFromFile(ConfigurationManager
                             .AppSettings["resend_statistics"]);
+            string errorVectorWeightValue = ConfigurationManager
+                            .AppSettings["error_vector_weight"];
+
+            var errorVectorWeight = int.Parse(errorVectorWeightValue);
 
             var statistics = new FailureUnderRelatedMessageStatistics();
 
@@ -32,26 +36,28 @@ namespace McEliece.Cryptosystem.Security
             string messageData2 = fileReader.ReadFromFile(ConfigurationManager
                             .AppSettings["message_vector_name2"]);
 
-              /*var publicKey = Converter.ConvertToMatrix(publicKeyData);
-               var messageVector1 = Converter.ConvertToVector(messageData1);
-               var messageVector2 = Converter.ConvertToVector(messageData2);
+            /*var publicKey = Converter.ConvertToMatrix(publicKeyData);
+             var messageVector1 = Converter.ConvertToVector(messageData1);
+             var messageVector2 = Converter.ConvertToVector(messageData2);
 
-               var attack = new FailureUnderRelatedMessageAttacks();
+             var attack = new FailureUnderRelatedMessageAttacks();
 
-               for (int i = 1; i <= 100; i++)
-               {
-                   var relatedMessageEntry = attack.PrepareDataAndAttemptRelatedAttack(messageVector1, messageVector2, 50, publicKey);
-                   System.Console.WriteLine(i + ". iteration" + System.Environment.NewLine + "  " + relatedMessageEntry.SpentTime
-                       + ", " + relatedMessageEntry.TotalIterationsCount + ", " + DateTime.Now);
-                   var resendMessageEntry = attack.PrepareDataAndAttemptResendAttack(messageVector1, 50, publicKey);
-                   System.Console.WriteLine("  " + resendMessageEntry.SpentTime + ", "
-                       + resendMessageEntry.TotalIterationsCount);
-                   relatedStatistics.Add(relatedMessageEntry);
-                   resendStatistics.Add(resendMessageEntry);
-               }
-               fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedStatistics), "RelatedMessageAttackStatisticss.txt");
-               fileWriter.WriteToFile(JsonConvert.SerializeObject(resendStatistics), "ResendMessageAttackStatisticss.txt");
-               */
+             for (int i = 1; i <= 100; i++)
+             {
+                 var relatedMessageEntry = attack.PrepareDataAndAttemptRelatedAttack(messageVector1, messageVector2,
+                                                                                      errorVectorWeight, publicKey);
+                 System.Console.WriteLine(i + ". iteration" + System.Environment.NewLine + "  " + relatedMessageEntry.SpentTime
+                     + ", " + relatedMessageEntry.TotalIterationsCount + ", " + DateTime.Now);
+                 var resendMessageEntry = attack.PrepareDataAndAttemptResendAttack(messageVector1,
+                                                                    errorVectorWeight, publicKey);
+                 System.Console.WriteLine("  " + resendMessageEntry.SpentTime + ", "
+                     + resendMessageEntry.TotalIterationsCount);
+                 relatedStatistics.Add(relatedMessageEntry);
+                 resendStatistics.Add(resendMessageEntry);
+             }
+             fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedStatistics), "RelatedMessageAttackStatisticss.txt");
+             fileWriter.WriteToFile(JsonConvert.SerializeObject(resendStatistics), "ResendMessageAttackStatisticss.txt");
+             */
         }
     }
 }

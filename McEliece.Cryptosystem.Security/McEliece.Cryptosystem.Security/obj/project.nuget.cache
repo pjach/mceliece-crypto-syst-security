@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+f5qUrbz04d1Jbt1WWaZju0KlF7WtrYP+Ob6wCDCq1BtLaqmDt3qHYzoRWj26y5dz02JDuGcK/Rx5qab0aUXQQ==",
+  "dgSpecHash": "u0ez9V9ZcNe5JJRCtyj/dMH6B4DE9Sf/TX2254OR/Vz3pL+P/OaxDxvj8XTwTFcJrU9dFzqhtDlK4lHOqyMzpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
+  "projectFilePath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pjach\\.nuget\\packages\\mathnet.numerics\\4.12.0\\mathnet.numerics.4.12.0.nupkg.sha512",
     "C:\\Users\\pjach\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",

@@ -1,9 +1,9 @@
-﻿using McEliece.Cryptosystem.Security.Models;
+﻿using MIF.VU.PJach.McElieceSecurity.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace McEliece.Cryptosystem.Security.Statistics
+namespace MIF.VU.PJach.McElieceSecurity.Statistics
 {
     public class FailureUnderRelatedMessageStatistics
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace McEliece.Cryptosystem.Security.Utilities
+namespace MIF.VU.PJach.McElieceSecurity.Utilities
 {
     public static class CalculationHelper
     {

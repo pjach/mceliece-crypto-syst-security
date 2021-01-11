@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace McEliece.Cryptosystem.Security.Utilities
+namespace MIF.VU.PJach.McElieceSecurity.Utilities
 {
     public static class PathHelper
     {

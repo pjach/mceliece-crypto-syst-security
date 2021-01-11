@@ -1,10 +1,10 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
-using McEliece.Cryptosystem.Security.Models;
-using McEliece.Cryptosystem.Security.Utilities;
+using MIF.VU.PJach.McElieceSecurity.Models;
+using MIF.VU.PJach.McElieceSecurity.Utilities;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace McEliece.Cryptosystem.Security.Attacks
+namespace MIF.VU.PJach.McElieceSecurity.Attacks
 {
     public class FailureUnderRelatedMessageAttacks
     {

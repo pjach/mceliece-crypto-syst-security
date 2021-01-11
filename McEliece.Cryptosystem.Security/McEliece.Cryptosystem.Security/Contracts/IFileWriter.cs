@@ -1,4 +1,4 @@
-﻿namespace McEliece.Cryptosystem.Security.Contracts
+﻿namespace MIF.VU.PJach.McElieceSecurity.Contracts
 {
     public interface IFileWriter
     {

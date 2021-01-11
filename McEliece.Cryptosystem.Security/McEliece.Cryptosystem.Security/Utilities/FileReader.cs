@@ -1,8 +1,8 @@
-﻿using McEliece.Cryptosystem.Security.Contracts;
+﻿using MIF.VU.PJach.McElieceSecurity.Contracts;
 using System;
 using System.IO;
 
-namespace McEliece.Cryptosystem.Security.Utilities
+namespace MIF.VU.PJach.McElieceSecurity.Utilities
 {
     public class FileReader : IFileReader
     {

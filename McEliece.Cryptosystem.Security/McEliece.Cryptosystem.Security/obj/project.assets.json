@@ -548,9 +548,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
-      "projectName": "McEliece.Cryptosystem.Security",
-      "projectPath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security.csproj",
+      "projectUniqueName": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj",
+      "projectName": "McEliece",
+      "projectPath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj",
       "packagesPath": "C:\\Users\\pjach\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\obj\\",
       "projectStyle": "PackageReference",

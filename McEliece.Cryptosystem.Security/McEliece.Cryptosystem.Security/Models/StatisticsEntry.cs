@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McEliece.Cryptosystem.Security.Models
+namespace MIF.VU.PJach.McElieceSecurity.Models
 {
     public class StatisticsEntry
     {

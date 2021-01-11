@@ -1,6 +1,6 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
 
-namespace McEliece.Cryptosystem.Security.Utilities
+namespace MIF.VU.PJach.McElieceSecurity.Utilities
 {
     public static class Converter
     {
@@ -35,7 +35,5 @@ namespace McEliece.Cryptosystem.Security.Utilities
 
             return Vector<float>.Build.DenseOfArray(arrayVector);
         }
-
-
     }
 }
