@@ -6,5 +6,6 @@
         public int Count { get; set; }
         public int Sum { get; set; }
         public int Average { get; set; }
+        public int L0SetCountOccurrences { get; set; }
     }
 }

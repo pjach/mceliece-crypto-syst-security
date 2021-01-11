@@ -40,7 +40,8 @@ namespace McEliece.Cryptosystem.Security.Statistics
                     {
                         Count = 0,
                         L0SetCount = statisticsList[i].L0SetCount,
-                        Sum = 0
+                        Sum = 0,
+                        L0SetCountOccurrences = 0
                     });
                 }
             }
@@ -48,6 +49,8 @@ namespace McEliece.Cryptosystem.Security.Statistics
             for (int i = 0; i < statisticsList.Count; i++)
             {
                 var entr1 = L0Averages.Where(e => e.L0SetCount == statisticsList[i].L0SetCount).First();
+
+                entr1.L0SetCountOccurrences++;
 
                 entr1.Count += statisticsList[i].GuessesUntilErrorFreeColumnsSelected.Count;
 
@@ -87,6 +90,16 @@ namespace McEliece.Cryptosystem.Security.Statistics
                 + averageSuccessfulEliminations);
             System.Console.WriteLine("Average guesses until error free columns were selected:"
                 + System.Environment.NewLine + averageTotalGuessesUntilFound);
+
+            System.Console.WriteLine("Density of occurrencies and the percentage"
+                + " of total iterations across L0 set count:");
+
+            foreach (AverageEntry average in finalL0Averages)
+            {
+                float percentage = (float)average.L0SetCountOccurrences / (float)statisticsList.Count * 100;
+                System.Console.WriteLine(average.L0SetCount + ": " + average.L0SetCountOccurrences
+                    + ", " + percentage + "%");
+            }
         }
     }
 }
