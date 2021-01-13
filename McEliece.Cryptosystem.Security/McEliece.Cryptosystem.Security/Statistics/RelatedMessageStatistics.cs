@@ -1,5 +1,7 @@
-﻿using MIF.VU.PJach.McElieceSecurity.Models;
+﻿using MIF.VU.PJach.McElieceSecurity.Contracts;
+using MIF.VU.PJach.McElieceSecurity.Models;
 using Newtonsoft.Json;
+using Serilog;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,6 +9,13 @@ namespace MIF.VU.PJach.McElieceSecurity.Statistics
 {
     public class RelatedMessageStatistics
     {
+        private readonly ILogger _logger;
+
+        public RelatedMessageStatistics(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         public void CalculateAndPrintStatistics(string data)
         {
             var statisticsList = JsonConvert.DeserializeObject<List<StatisticsEntry>>(data);
@@ -73,31 +82,30 @@ namespace MIF.VU.PJach.McElieceSecurity.Statistics
                 .Take(totalGuessesUntilFoundErrorFreeColumnsSum.Count)
                 .Sum()
                 / totalGuessesUntilFoundErrorFreeColumnsSum.Count;
-
-            System.Console.WriteLine("Average guesses until error-free columns were selected for each L0 set size");
+            _logger.Debug("Average guesses until error-free columns were selected for each L0 set size");
             foreach (AverageEntry average in finalL0Averages)
             {
                 average.Average = (double)average.Sum / average.Count;
-                System.Console.WriteLine(average.L0SetCount + ", " + average.Average);
+                _logger.Debug(average.L0SetCount + ", " + average.Average);
             }
 
-            System.Console.WriteLine("Average Time:" + System.Environment.NewLine + averageTime);
-            System.Console.WriteLine("Average total iterations:" + System.Environment.NewLine
+            _logger.Debug("Average Time:" + System.Environment.NewLine + averageTime);
+            _logger.Debug("Average total iterations:" + System.Environment.NewLine
                 + averageTotalIterations);
-            System.Console.WriteLine("Average L0 set size:" + System.Environment.NewLine
+            _logger.Debug("Average L0 set size:" + System.Environment.NewLine
                 + averageL0SetSize);
-            System.Console.WriteLine("Average successful eliminations:" + System.Environment.NewLine
+            _logger.Debug("Average successful eliminations:" + System.Environment.NewLine
                 + averageSuccessfulEliminations);
-            System.Console.WriteLine("Average guesses until error free columns were selected:"
+            _logger.Debug("Average guesses until error free columns were selected:"
                 + System.Environment.NewLine + averageTotalGuessesUntilFound);
 
-            System.Console.WriteLine("Density of occurrencies and the percentage"
+            _logger.Debug("Density of occurrencies and the percentage"
                 + " of total iterations across L0 set count:");
 
             foreach (AverageEntry average in finalL0Averages)
             {
                 float percentage = (float)average.L0SetCountOccurrences / (float)statisticsList.Count * 100;
-                System.Console.WriteLine(average.L0SetCount + ": " + average.L0SetCountOccurrences
+                _logger.Debug(average.L0SetCount + ": " + average.L0SetCountOccurrences
                     + ", " + percentage + "%");
             }
         }
@@ -168,30 +176,30 @@ namespace MIF.VU.PJach.McElieceSecurity.Statistics
                 .Sum()
                 / totalGuessesUntilFoundErrorFreeColumnsSum.Count;
 
-            System.Console.WriteLine("Average guesses until error-free columns were selected for each L0 set size");
+            _logger.Debug("Average guesses until error-free columns were selected for each L0 set size");
             foreach (AverageEntry average in finalL0Averages)
             {
                 average.Average = (double)average.Sum / average.Count;
-                System.Console.WriteLine(average.L0SetCount + ", " + average.Average);
+                _logger.Debug(average.L0SetCount + ", " + average.Average);
             }
 
-            System.Console.WriteLine("Average Time:" + System.Environment.NewLine + averageTime);
-            System.Console.WriteLine("Average total iterations:" + System.Environment.NewLine
+            _logger.Debug("Average Time:" + System.Environment.NewLine + averageTime);
+            _logger.Debug("Average total iterations:" + System.Environment.NewLine
                 + averageTotalIterations);
-            System.Console.WriteLine("Average L0 set size:" + System.Environment.NewLine
+            _logger.Debug("Average L0 set size:" + System.Environment.NewLine
                 + averageL0SetSize);
-            System.Console.WriteLine("Average successful eliminations:" + System.Environment.NewLine
+            _logger.Debug("Average successful eliminations:" + System.Environment.NewLine
                 + averageSuccessfulEliminations);
-            System.Console.WriteLine("Average guesses until error free columns were selected:"
+            _logger.Debug("Average guesses until error free columns were selected:"
                 + System.Environment.NewLine + averageTotalGuessesUntilFound);
 
-            System.Console.WriteLine("Density of occurrencies and the percentage"
+            _logger.Debug("Density of occurrencies and the percentage"
                 + " of total iterations across L0 set count:");
 
             foreach (AverageEntry average in finalL0Averages)
             {
                 float percentage = (float)average.L0SetCountOccurrences / (float)statisticsList.Count * 100;
-                System.Console.WriteLine(average.L0SetCount + ": " + average.L0SetCountOccurrences
+                _logger.Debug(average.L0SetCount + ": " + average.L0SetCountOccurrences
                     + ", " + percentage + "%");
             }
         }

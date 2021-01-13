@@ -31,3 +31,6 @@ C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliec
 C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\obj\Debug\netcoreapp3.1\McEliece.dll
 C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\obj\Debug\netcoreapp3.1\McEliece.pdb
 C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\obj\Debug\netcoreapp3.1\McEliece.genruntimeconfig.cache
+C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\bin\Debug\netcoreapp3.1\Serilog.Settings.AppSettings.dll
+C:\Users\pjach\Univeras\GitExtensionsRepos\mceliece-crypto-syst-security\McEliece.Cryptosystem.Security\McEliece.Cryptosystem.Security\bin\Debug\netcoreapp3.1\Serilog.Sinks.Console.dll

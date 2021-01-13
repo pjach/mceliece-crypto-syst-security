@@ -21,19 +21,5 @@ namespace MIF.VU.PJach.McElieceSecurity.Utilities
             }
             return Matrix<float>.Build.DenseOfArray(matrixArray);
         }
-
-        public static Vector<float> ConvertToVector(string data)
-        {
-            string[] textVectorArray = data.Split(", ");
-
-            float[] arrayVector = new float[textVectorArray.Length];
-
-            for (int i = 0; i < textVectorArray.Length; i++)
-            {
-                arrayVector[i] = float.Parse(textVectorArray[i]);
-            }
-
-            return Vector<float>.Build.DenseOfArray(arrayVector);
-        }
     }
 }

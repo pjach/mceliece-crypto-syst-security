@@ -191,6 +191,18 @@ namespace MIF.VU.PJach.McElieceSecurity.Utilities
             return vector;
         }
 
+        public static Vector<float> GenerateRandomVector(int length, Randomizer randomizer)
+        {
+            var vector = Vector<float>.Build.Dense(length, 0);
+
+            for (int i = 0; i < length; i++)
+            {
+                vector[i] = randomizer.Next(0, length - 1);
+            }
+
+            return vector;
+        }
+
         public static Vector<float> AddVectorMod2(Vector<float> vector1, Vector<float> vector2)
         {
             var finalVector = Vector<float>.Build.Dense(vector1.Count, 0);

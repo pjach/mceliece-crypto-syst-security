@@ -67,9 +67,11 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
             }
         }
 
-        public StatisticsEntry PrepareDataAndAttemptResendAttack(Vector<float> vectorMessage, int amountOfErrors, Matrix<float> publicKey)
+        public StatisticsEntry PrepareDataAndAttemptResendAttack(int amountOfErrors, Matrix<float> publicKey)
         {
-            var errorFreeVector = CalculationHelper.MultipyMatrixWithVector(publicKey, vectorMessage);
+            var messageVector = CalculationHelper.GenerateRandomVector(publicKey.ColumnCount, randomizer);
+
+            var errorFreeVector = CalculationHelper.MultipyMatrixWithVector(publicKey, messageVector);
 
             var errorVector1 = CalculationHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
             var errorVector2 = CalculationHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
@@ -80,9 +82,11 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
             return FailureUnderMessageResendAttack(amountOfErrors, interceptedVector1, interceptedVector2, publicKey, errorVector1, errorVector2);
         }
 
-        public StatisticsEntry PrepareDataAndAttemptRelatedAttack(Vector<float> messageVector1, Vector<float> messageVector2,
-                                                                                 int amountOfErrors, Matrix<float> publicKey)
+        public StatisticsEntry PrepareDataAndAttemptRelatedAttack(int amountOfErrors, Matrix<float> publicKey)
         {
+            var messageVector1 = CalculationHelper.GenerateRandomVector(publicKey.ColumnCount, randomizer);
+            var messageVector2 = CalculationHelper.GenerateRandomVector(publicKey.ColumnCount, randomizer);
+
             var messagesSum = CalculationHelper.AddVectorMod2(messageVector1, messageVector2);
 
             var errorFreeVector1 = CalculationHelper.MultipyMatrixWithVector(publicKey, messageVector1);
