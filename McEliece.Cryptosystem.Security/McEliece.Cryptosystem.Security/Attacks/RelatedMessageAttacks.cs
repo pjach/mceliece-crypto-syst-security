@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace MIF.VU.PJach.McElieceSecurity.Attacks
 {
-    public class FailureUnderRelatedMessageAttacks
+    public class RelatedMessageAttacks
     {
         private readonly Randomizer randomizer = Randomizer.Instance;
         private readonly Stopwatch stopwatch = new Stopwatch();
