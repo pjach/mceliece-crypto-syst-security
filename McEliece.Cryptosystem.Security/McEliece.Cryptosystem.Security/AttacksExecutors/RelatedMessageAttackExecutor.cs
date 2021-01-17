@@ -32,13 +32,13 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
             ErrorVectorWeight = int.Parse(errorVectorWeightValue);
         }
 
-        public RelatedMessageAttackExecutor(IFileWriter fileWriter, IList<StatisticsEntry> relatedMessageStatistics,
-                             ILogger logger, IFileReader fileReader, IList<StatisticsEntry> resendMessageStatistics)
+        public RelatedMessageAttackExecutor(IFileWriter fileWriter, string relatedMessageStatistics,
+                             ILogger logger, IFileReader fileReader, string resendMessageStatistics)
         {
             _logger = logger;
             this.fileWriter = fileWriter;
-            this.relatedMessageStatistics = relatedMessageStatistics;
-            this.resendMessageStatistics = resendMessageStatistics;
+            this.relatedMessageStatistics = JsonConvert.DeserializeObject<List<StatisticsEntry>>(relatedMessageStatistics);
+            this.resendMessageStatistics = JsonConvert.DeserializeObject<List<StatisticsEntry>>(resendMessageStatistics);
             var publicKeyData = fileReader.ReadFromFile(ConfigurationManager.AppSettings["public_matrix_file_name"]);
             PublicKey = Converter.ConvertToMatrix(publicKeyData);
             var errorVectorWeightValue = ConfigurationManager.AppSettings["error_vector_weight"];
@@ -51,7 +51,7 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
             {
                 relatedMessageStatistics.Add(messageAttacks.PrepareDataAndAttemptRelatedAttack(ErrorVectorWeight, PublicKey));
             }
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "RelatedMessageAttackStatisticss");
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "RelatedMessageAttackStatistics");
         }
 
         public void ExecuteResendMessageAttack(int amountOfAttacks)
@@ -60,7 +60,7 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
             {
                 resendMessageStatistics.Add(messageAttacks.PrepareDataAndAttemptResendAttack(ErrorVectorWeight, PublicKey));
             }
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "ResendMessageAttackStatisticss");
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "ResendMessageAttackStatistics");
         }
 
         public void ExecuteBothAttacks(int amountOfAttacks)
@@ -70,8 +70,8 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
                 resendMessageStatistics.Add(messageAttacks.PrepareDataAndAttemptResendAttack(ErrorVectorWeight, PublicKey));
                 relatedMessageStatistics.Add(messageAttacks.PrepareDataAndAttemptRelatedAttack(ErrorVectorWeight, PublicKey));
             }
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "ResendMessageAttackStatisticss");
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(resendMessageStatistics), "RelatedMessageAttackStatisticss");
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "ResendMessageAttackStatistics");
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(resendMessageStatistics), "RelatedMessageAttackStatistics");
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using MIF.VU.PJach.McElieceSecurity.AttacksExecutors;
-using MIF.VU.PJach.McElieceSecurity.Contracts;
+﻿using MIF.VU.PJach.McElieceSecurity.Contracts;
 using MIF.VU.PJach.McElieceSecurity.Statistics;
 using MIF.VU.PJach.McElieceSecurity.Utilities;
 using Serilog;
@@ -29,9 +28,6 @@ namespace MIF.VU.PJach.McElieceSecurity
 
             _logger.Debug("Failure under resend message attack statistics");
             statistics.CalculateAndPrintStatistics(resendAttackData);
-
-            var attackExecutor = new RelatedMessageAttackExecutor(fileWriter, fileReader, _logger);
-            attackExecutor.ExecuteBothAttacks(1);
         }
     }
 }
