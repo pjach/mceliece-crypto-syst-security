@@ -14,6 +14,7 @@ namespace MIF.VU.PJach.McElieceSecurity
             var _logger = new LoggerConfiguration()
                     .ReadFrom.AppSettings()
                     .CreateLogger();
+
             IFileReader fileReader = new FileReader();
             IFileWriter fileWriter = new FileWriter();
             string relatedAttackData = fileReader.ReadFromFile(ConfigurationManager
