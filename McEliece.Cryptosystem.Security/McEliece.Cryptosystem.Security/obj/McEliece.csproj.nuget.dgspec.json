@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj": {}
+    "C:\\Users\\pjach\\Desktop\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj": {
+    "C:\\Users\\pjach\\Desktop\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj",
+        "projectUniqueName": "C:\\Users\\pjach\\Desktop\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj",
         "projectName": "McEliece",
-        "projectPath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj",
+        "projectPath": "C:\\Users\\pjach\\Desktop\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\McEliece.csproj",
         "packagesPath": "C:\\Users\\pjach\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pjach\\Univeras\\GitExtensionsRepos\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\obj\\",
+        "outputPath": "C:\\Users\\pjach\\Desktop\\mceliece-crypto-syst-security\\McEliece.Cryptosystem.Security\\McEliece.Cryptosystem.Security\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pjach\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Combinatorics": {
+              "target": "Package",
+              "version": "[1.1.0.19, )"
+            },
             "MathNet.Numerics": {
               "target": "Package",
               "version": "[4.12.0, )"

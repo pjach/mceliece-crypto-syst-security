@@ -2,9 +2,9 @@
 
 namespace MIF.VU.PJach.McElieceSecurity.Models
 {
-    public class StatisticsEntry
+    public class RelatedAttackStatisticsEntry
     {
-        public StatisticsEntry()
+        public RelatedAttackStatisticsEntry()
         {
             GuessesUntilErrorFreeColumnsSelected = new List<int>();
         }
@@ -14,6 +14,6 @@ namespace MIF.VU.PJach.McElieceSecurity.Models
         public long SpentTime { get; set; }
         public int L0SetCount { get; set; }
         public int L1SetCount { get; set; }
-        public List<int> GuessesUntilErrorFreeColumnsSelected { get; set; }
+        public IList<int> GuessesUntilErrorFreeColumnsSelected { get; set; }
     }
 }

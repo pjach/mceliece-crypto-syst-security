@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace MIF.VU.PJach.McElieceSecurity.Statistics
 {
-    public class RelatedMessageStatistics
+    public class RelatedMessageStatistics : IStatistics
     {
         private readonly ILogger _logger;
 
@@ -15,9 +15,9 @@ namespace MIF.VU.PJach.McElieceSecurity.Statistics
             _logger = logger;
         }
 
-        public void CalculateAndPrintStatistics(string data)
+        public void PrintStatistics(string data)
         {
-            var statisticsList = JsonConvert.DeserializeObject<List<StatisticsEntry>>(data);
+            var statisticsList = JsonConvert.DeserializeObject<List<RelatedAttackStatisticsEntry>>(data);
 
             double averageTime = 0;
             double averageL0SetSize = 0;

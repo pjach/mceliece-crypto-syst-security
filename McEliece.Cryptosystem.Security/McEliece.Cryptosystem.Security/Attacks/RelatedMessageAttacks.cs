@@ -11,12 +11,12 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
         private readonly Randomizer randomizer = Randomizer.Instance;
         private readonly Stopwatch stopwatch = new Stopwatch();
 
-        public StatisticsEntry FailureUnderMessageResendAttack(int errorVectorWeight, Vector<float> interceptedVector1,
+        public RelatedAttackStatisticsEntry FailureUnderMessageResendAttack(int errorVectorWeight, Vector<float> interceptedVector1,
           Vector<float> interceptedVector2, Matrix<float> publicKey, Vector<float> errorVector1, Vector<float> errorVector2)
         {
             var L0Set = new List<int>();
             var L1Set = new List<int>();
-            var statisticsEntry = new StatisticsEntry();
+            var statisticsEntry = new RelatedAttackStatisticsEntry();
 
             stopwatch.Restart();
             //Calculates L0 and L1 sets
@@ -79,10 +79,10 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
             }
         }
 
-        public StatisticsEntry PrepareDataAndAttemptResendAttack(int amountOfErrors, Matrix<float> publicKey)
+        public RelatedAttackStatisticsEntry PrepareDataAndAttemptResendAttack(int amountOfErrors, Matrix<float> publicKey)
         {
             //Generating random original message
-            var messageVector = CalculationHelper.GenerateRandomVector(publicKey.ColumnCount, randomizer);
+            var messageVector = CalculationHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
 
             //Encrypting original message
             var errorFreeVector = CalculationHelper.MultipyMatrixWithVector(publicKey, messageVector);
@@ -99,11 +99,11 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
             return FailureUnderMessageResendAttack(amountOfErrors, interceptedVector1, interceptedVector2, publicKey, errorVector1, errorVector2);
         }
 
-        public StatisticsEntry PrepareDataAndAttemptRelatedAttack(int amountOfErrors, Matrix<float> publicKey)
+        public RelatedAttackStatisticsEntry PrepareDataAndAttemptRelatedAttack(int amountOfErrors, Matrix<float> publicKey)
         {
             //Generating random original messages
-            var messageVector1 = CalculationHelper.GenerateRandomVector(publicKey.ColumnCount, randomizer);
-            var messageVector2 = CalculationHelper.GenerateRandomVector(publicKey.ColumnCount, randomizer);
+            var messageVector1 = CalculationHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
+            var messageVector2 = CalculationHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
 
             //Counting the sum of the original messages
             var messagesSum = CalculationHelper.AddVectorMod2(messageVector1, messageVector2);
