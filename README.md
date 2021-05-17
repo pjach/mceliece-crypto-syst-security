@@ -2,6 +2,6 @@ Project and bachelor work "Study of the security of McEliece public-key cryptosy
 
 Implemented attacks:
 1. Related/Resend message attack.
-2. General Information Set Decoding (GISD) attack.
+2. Finding Low-Weight Codeword attack.
 
 Paulius Jachimovičius, 2020-2021.
