@@ -2,7 +2,7 @@
 using MIF.VU.PJach.McElieceSecurity.Attacks;
 using MIF.VU.PJach.McElieceSecurity.Contracts;
 using MIF.VU.PJach.McElieceSecurity.Models;
-using MIF.VU.PJach.McElieceSecurity.Utilities;
+using MIF.VU.PJach.McElieceSecurity.Utilities.Helpers;
 using Newtonsoft.Json;
 using Serilog;
 using System;
@@ -28,7 +28,7 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
             relatedMessageStatistics = new List<RelatedAttackStatisticsEntry>();
             resendMessageStatistics = new List<RelatedAttackStatisticsEntry>();
             var publicKeyData = fileReader.ReadFromFile(ConfigurationManager.AppSettings["public_matrix_file_name"]);
-            PublicKey = Converter.ConvertToMatrix(publicKeyData);
+            PublicKey = MatrixHelper.ConvertToMatrix(publicKeyData);
             var errorVectorWeightValue = ConfigurationManager.AppSettings["error_vector_weight"];
             ErrorVectorWeight = int.Parse(errorVectorWeightValue);
         }
@@ -43,7 +43,7 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
             this.relatedMessageStatistics = JsonConvert.DeserializeObject<List<RelatedAttackStatisticsEntry>>(relatedStatisticsJson);
             this.resendMessageStatistics = JsonConvert.DeserializeObject<List<RelatedAttackStatisticsEntry>>(resendStatisticsJson);
             var publicKeyData = fileReader.ReadFromFile(ConfigurationManager.AppSettings["public_matrix_file_name"]);
-            PublicKey = Converter.ConvertToMatrix(publicKeyData);
+            PublicKey = MatrixHelper.ConvertToMatrix(publicKeyData);
             var errorVectorWeightValue = ConfigurationManager.AppSettings["error_vector_weight"];
             ErrorVectorWeight = int.Parse(errorVectorWeightValue);
         }
@@ -55,7 +55,7 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
                 relatedMessageStatistics.Add(messageAttacks.PrepareDataAndAttemptRelatedAttack(ErrorVectorWeight, PublicKey));
                 _logger.Debug($"Related attack {i} finished. {amountOfAttacks - i} left. Count of statistics items: {relatedMessageStatistics.Count}. The time: {DateTime.Now}");
             }
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "RelatedMessageAttackStatistics");
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), ConfigurationManager.AppSettings["related_statistics"]);
         }
 
         public void ExecuteResendMessageAttack(int amountOfAttacks)
@@ -65,7 +65,7 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
                 resendMessageStatistics.Add(messageAttacks.PrepareDataAndAttemptResendAttack(ErrorVectorWeight, PublicKey));
                 _logger.Debug($"Resend attack {i} finished. {amountOfAttacks - i} left. Count of statistics items: {relatedMessageStatistics.Count}. The time: {DateTime.Now}");
             }
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "ResendMessageAttackStatistics");
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), ConfigurationManager.AppSettings["resend_statistics"]);
         }
 
         public void ExecuteBothAttacks(int amountOfAttacks)
@@ -77,8 +77,8 @@ namespace MIF.VU.PJach.McElieceSecurity.AttacksExecutors
                 relatedMessageStatistics.Add(messageAttacks.PrepareDataAndAttemptRelatedAttack(ErrorVectorWeight, PublicKey));
                 _logger.Debug($"Related attack {i} finished. {amountOfAttacks - i} left. Count of statistics items: {relatedMessageStatistics.Count}. The time: {DateTime.Now}");
             }
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), "ResendMessageAttackStatistics.txt");
-            fileWriter.WriteToFile(JsonConvert.SerializeObject(resendMessageStatistics), "RelatedMessageAttackStatistics.txt");
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(relatedMessageStatistics), ConfigurationManager.AppSettings["related_statistics"]);
+            fileWriter.WriteToFile(JsonConvert.SerializeObject(resendMessageStatistics), ConfigurationManager.AppSettings["resend_statistics"]);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
 using MIF.VU.PJach.McElieceSecurity.Models;
 using MIF.VU.PJach.McElieceSecurity.Utilities;
+using MIF.VU.PJach.McElieceSecurity.Utilities.Helpers;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -32,7 +33,7 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
             {
                 linearlyIndependentColumnsGuesses++;
                 //Generates random indices for the attack
-                var randomIndicess = CalculationHelper.GenerateKnumberOfRandomColumnsIndices(rowCount, L0Set, randomizer);
+                var randomIndicess = RandomnessHelper.GenerateKnumberOfRandomColumnsIndices(rowCount, L0Set, randomizer);
                 //Stops the stopwatch, checks whether at least one of the chosen indices
                 //were garbled by the error vector, records it
                 stopwatch.Stop();
@@ -44,10 +45,14 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
                 }
                 stopwatch.Start();
                 //Builds temporary matrix for the Gaussian elimination
-                var temporaryMatrix = CalculationHelper.ConstructTemporaryMatrix(randomIndicess,
+                var temporaryMatrix = MatrixHelper.ConstructTemporaryMatrix(randomIndicess,
                                                            publicKey, interceptedVector1);
                 //Executes Gaussian elimination algorithm
-                var IsEliminableByGaussian = CalculationHelper.IsEliminableByGaussian(temporaryMatrix);
+                stopwatch.Restart();
+                var IsEliminableByGaussian = MatrixHelper.IsEliminableByGaussian(temporaryMatrix);
+                stopwatch.Stop();
+                System.Console.WriteLine(stopwatch.ElapsedMilliseconds / 1000);
+                stopwatch.Start();
 
                 if (IsEliminableByGaussian)
                 {
@@ -59,7 +64,7 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
                     var messageCandidate = CalculationHelper.MultipyMatrixWithVector(publicKey,
                                                        temporaryMatrix.Column(rowCount));
                     //Checking the Hamming distance between the candidate and ciphered vector
-                    var hammingDistance = CalculationHelper.GetHammingDistance(interceptedVector1, messageCandidate);
+                    var hammingDistance = VectorHelper.GetHammingDistance(interceptedVector1, messageCandidate);
 
                     if (hammingDistance == errorVectorWeight)
                     {
@@ -82,18 +87,18 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
         public RelatedAttackStatisticsEntry PrepareDataAndAttemptResendAttack(int amountOfErrors, Matrix<float> publicKey)
         {
             //Generating random original message
-            var messageVector = CalculationHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
+            var messageVector = RandomnessHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
 
             //Encrypting original message
             var errorFreeVector = CalculationHelper.MultipyMatrixWithVector(publicKey, messageVector);
 
             //Generating error vectors
-            var errorVector1 = CalculationHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
-            var errorVector2 = CalculationHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
+            var errorVector1 = RandomnessHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
+            var errorVector2 = RandomnessHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
 
             //Adding error vectors to the encrypted messages
-            var interceptedVector1 = CalculationHelper.AddVectorMod2(errorFreeVector, errorVector1);
-            var interceptedVector2 = CalculationHelper.AddVectorMod2(errorFreeVector, errorVector2);
+            var interceptedVector1 = VectorHelper.AddVectorMod2(errorFreeVector, errorVector1);
+            var interceptedVector2 = VectorHelper.AddVectorMod2(errorFreeVector, errorVector2);
 
             //Initiate message resend attack
             return FailureUnderMessageResendAttack(amountOfErrors, interceptedVector1, interceptedVector2, publicKey, errorVector1, errorVector2);
@@ -102,11 +107,11 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
         public RelatedAttackStatisticsEntry PrepareDataAndAttemptRelatedAttack(int amountOfErrors, Matrix<float> publicKey)
         {
             //Generating random original messages
-            var messageVector1 = CalculationHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
-            var messageVector2 = CalculationHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
+            var messageVector1 = RandomnessHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
+            var messageVector2 = RandomnessHelper.GenerateRandomVector(publicKey.RowCount, randomizer);
 
             //Counting the sum of the original messages
-            var messagesSum = CalculationHelper.AddVectorMod2(messageVector1, messageVector2);
+            var messagesSum = VectorHelper.AddVectorMod2(messageVector1, messageVector2);
 
             //Encrypting original messages
             var errorFreeVector1 = CalculationHelper.MultipyMatrixWithVector(publicKey, messageVector1);
@@ -116,15 +121,15 @@ namespace MIF.VU.PJach.McElieceSecurity.Attacks
             var sumVector = CalculationHelper.MultipyMatrixWithVector(publicKey, messagesSum);
 
             //Generating error vectors
-            var errorVector1 = CalculationHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
-            var errorVector2 = CalculationHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
+            var errorVector1 = RandomnessHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
+            var errorVector2 = RandomnessHelper.GenerateErrorVector(publicKey.ColumnCount, amountOfErrors, randomizer);
 
             //Adding error vectors to the encrypted messages
-            var interceptedVector1 = CalculationHelper.AddVectorMod2(errorFreeVector1, errorVector1);
-            var interceptedVector2 = CalculationHelper.AddVectorMod2(errorFreeVector2, errorVector2);
+            var interceptedVector1 = VectorHelper.AddVectorMod2(errorFreeVector1, errorVector1);
+            var interceptedVector2 = VectorHelper.AddVectorMod2(errorFreeVector2, errorVector2);
 
             //Meeting related message attack conditions
-            var finalSumVector = CalculationHelper.AddVectorMod2(interceptedVector2, sumVector);
+            var finalSumVector = VectorHelper.AddVectorMod2(interceptedVector2, sumVector);
 
             //Executing related message attack
             return FailureUnderMessageResendAttack(amountOfErrors, interceptedVector1, finalSumVector, publicKey, errorVector1, errorVector2);

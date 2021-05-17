@@ -1,0 +1,1 @@
+[{"SpentTime":53165226,"InitialGaussianEliminationTime":4415,"TotalIterationsCount":50946,"FinalGaussianEliminationTime":2131}]

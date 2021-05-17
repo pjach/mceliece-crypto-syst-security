@@ -1,4 +1,5 @@
-﻿using MIF.VU.PJach.McElieceSecurity.Models;
+﻿using MIF.VU.PJach.McElieceSecurity.Contracts;
+using MIF.VU.PJach.McElieceSecurity.Models;
 using Newtonsoft.Json;
 using Serilog;
 using System.Collections.Generic;
